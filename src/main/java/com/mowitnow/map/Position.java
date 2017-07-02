@@ -18,6 +18,10 @@ public class Position {
         return y;
     }
 
+    public Position add(int x, int y) {
+        return new Position(this.x + x, this.y + y);
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == null) {
@@ -31,5 +35,10 @@ public class Position {
         }
         Position otherPosition = (Position)other;
         return this.getX() == otherPosition.getX() && this.getY() == otherPosition.getY();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Position [x:%s,y:%s]", this.x, this.y);
     }
 }

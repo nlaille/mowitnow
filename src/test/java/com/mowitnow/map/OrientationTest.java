@@ -27,7 +27,7 @@ public class OrientationTest {
     }
 
     @Test(expected = InvalidOrientationException.class)
-    public void givenOrientationKWhenInstantiatingThenThrowExcetpion() throws InvalidOrientationException {
-        Orientation orientationK = new Orientation('K');
+    public void givenOrientationUnknowWhenInstantiatingThenThrowInvalidOrientationExcetpion() throws InvalidOrientationException {
+        Orientation orientationUnknow = new Orientation('K');
     }
 }

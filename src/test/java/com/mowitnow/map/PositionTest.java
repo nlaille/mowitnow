@@ -41,4 +41,20 @@ public class PositionTest {
 
         assertEquals(position1x1, anoterPosition1x1);
     }
+
+    @Test
+    public void givenPosition1x1WhenAdding2x2ThenReturingPosition3x3() {
+        Position position1x1 = new Position(1, 1);
+        Position position3x3 = new Position(3, 3);
+
+        assertEquals(position3x3, position1x1.add(2, 2));
+    }
+
+    @Test
+    public void givenPosition2x1WhenCompareToAnotherPosition2x1ThenEquals() {
+        Position position2x1 = new Position(2, 1);
+        Position anoterPosition2x1 = new Position(2, 1);
+
+        assertEquals(position2x1, anoterPosition2x1);
+    }
 }
