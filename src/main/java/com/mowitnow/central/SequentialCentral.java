@@ -17,13 +17,16 @@ public class SequentialCentral {
     private Map map;
 
     public SequentialCentral(List<Automaton> automatons, Map map) throws CentralException {
+        this.automatons = automatons;
+        this.map = map;
         for (Automaton automaton : automatons) {
             if (!map.accept(automaton.getPosition())) {
                 throw new CentralException(String.format("%s ne peut se trouver dans %s", automaton, map));
             }
+            if (isThereAutomatonHere(automaton, automaton.getPosition())) {
+                throw new CentralException(String.format("%s se trouve a la meme position qu'un autre automate", automaton));
+            }
         }
-        this.automatons = automatons;
-        this.map = map;
     }
 
     public void run(List<List<Action>> actions) throws CentralException {
@@ -35,9 +38,9 @@ public class SequentialCentral {
         while (i < actions.size()) {
             Automaton automaton = automatons.get(i);
             List<Action> automatonActions = actions.get(i);
-            logger.info("Debut {}: {}", automaton, automatonActions);
+            logger.info("Debut de sequence {}: {}", automaton, automatonActions);
             runAutomatonSequence(automaton, automatonActions);
-            logger.info("Fin {}", automaton);
+            logger.info("Fin de sequence {}", automaton);
             i++;
         }
     }
@@ -46,10 +49,7 @@ public class SequentialCentral {
         for (Action action : actions) {
             OrientedPosition nextOrientedPosition = automaton.dryRun(action);
             if (map.accept(nextOrientedPosition.getPosition())) {
-                if (automaton.getPosition().equals(nextOrientedPosition.getPosition())) {
-                    automaton.run(action);
-                }
-                else if (!isThereAutomatonHere(nextOrientedPosition.getPosition())) {
+                if (!isThereAutomatonHere(automaton, nextOrientedPosition.getPosition())) {
                     automaton.run(action);
                 }
                 else {
@@ -62,9 +62,9 @@ public class SequentialCentral {
         }
     }
 
-    private boolean isThereAutomatonHere(Position position) {
+    private boolean isThereAutomatonHere(Automaton toExclude, Position position) {
         for (Automaton automaton : automatons) {
-            if (automaton.getPosition().equals(position))
+            if (automaton != toExclude && automaton.getPosition().equals(position))
                 return true;
         }
         return false;
