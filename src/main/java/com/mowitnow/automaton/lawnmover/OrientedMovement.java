@@ -7,16 +7,16 @@ public abstract class OrientedMovement implements Movement {
 
     @Override
     public OrientedPosition executeFrom(OrientedPosition orientedPosition) {
-        if (orientedPosition.getOrientation() == Orientation.N) {
+        if (orientedPosition.getOrientation().equals(Orientation.N)) {
             return executeFromN(orientedPosition);
         }
-        else if (orientedPosition.getOrientation() == Orientation.E) {
+        else if (orientedPosition.getOrientation().equals(Orientation.E)) {
             return executeFromE(orientedPosition);
         }
-        else if (orientedPosition.getOrientation() == Orientation.S) {
+        else if (orientedPosition.getOrientation().equals(Orientation.S)) {
             return executeFromS(orientedPosition);
         }
-        else if (orientedPosition.getOrientation() == Orientation.O) {
+        else if (orientedPosition.getOrientation().equals(Orientation.O)) {
             return executeFromO(orientedPosition);
         }
         else {

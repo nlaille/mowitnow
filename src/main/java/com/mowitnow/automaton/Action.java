@@ -21,4 +21,9 @@ public class Action {
         Action otherAction = (Action)other;
         return this.action == otherAction.action;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Action %c", action);
+    }
 }

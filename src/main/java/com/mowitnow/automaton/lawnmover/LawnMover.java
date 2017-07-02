@@ -28,10 +28,12 @@ public class LawnMover implements Automaton {
         this.movements.put(new Action('G'), new TurnLeft());
     }
 
+    @Override
     public Orientation getOrientation() {
         return orientation;
     }
 
+    @Override
     public Position getPosition() {
         return position;
     }
@@ -57,6 +59,26 @@ public class LawnMover implements Automaton {
             }
         }
         throw new ActionNotFoundException(String.format("L'action %s n'existe pas.", action));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof LawnMover)) {
+            return false;
+        }
+        LawnMover otherLawnMover = (LawnMover)other;
+        return this.position.equals(otherLawnMover.position) && this.orientation.equals(otherLawnMover.orientation);
+    }
+
+    @Override
+    public String toString() {
+        return String.format("LawnMover %s - %s", this.position, this.orientation);
     }
 
 }

@@ -2,7 +2,6 @@ package com.mowitnow.automaton.lawnmover;
 
 import com.mowitnow.automaton.Action;
 import com.mowitnow.automaton.ActionNotFoundException;
-import com.mowitnow.automaton.lawnmover.LawnMover;
 import com.mowitnow.map.InvalidOrientationException;
 import com.mowitnow.map.Orientation;
 import com.mowitnow.map.OrientedPosition;

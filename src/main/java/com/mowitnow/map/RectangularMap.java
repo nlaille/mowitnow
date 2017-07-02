@@ -15,7 +15,28 @@ public class RectangularMap implements Map {
 
     @Override
     public boolean accept(Position position) {
-        return position.getX() >= 0 && position.getX() < this.maxX
-                && position.getY() >= 0 && position.getY() < this.maxY;
+        return position.getX() >= 0 && position.getX() <= this.maxX
+                && position.getY() >= 0 && position.getY() <= this.maxY;
     }
+
+    @Override
+    public boolean equals(Object other) {
+        if (other == null) {
+            return false;
+        }
+        if (other == this) {
+            return true;
+        }
+        if (!(other instanceof RectangularMap)) {
+            return false;
+        }
+        RectangularMap otherMap = (RectangularMap)other;
+        return this.maxX == otherMap.maxX && this.maxY == otherMap.maxY;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("RectangularMap [x:%d y:%d]", this.maxX, this.maxY);
+    }
+
 }

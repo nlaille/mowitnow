@@ -26,11 +26,19 @@ public class RectangularMapTest {
     }
 
     @Test
-    public void givenARectangularMapOf4x4WhenMovingTo4x4ThenReturningFalse() throws MapException {
+    public void givenARectangularMapOf4x4WhenMovingTo4x4ThenReturningTrue() throws MapException {
         RectangularMap rectangularMapOf4x4 = new RectangularMap(4, 4);
         Position position4x4 = new Position(4, 4);
 
-        assertFalse(rectangularMapOf4x4.accept(position4x4));
+        assertTrue(rectangularMapOf4x4.accept(position4x4));
+    }
+
+    @Test
+    public void givenARectangularMapOf4x4WhenMovingTo5x5ThenReturningFalse() throws MapException {
+        RectangularMap rectangularMapOf4x4 = new RectangularMap(4, 4);
+        Position position5x5 = new Position(5, 5);
+
+        assertFalse(rectangularMapOf4x4.accept(position5x5));
     }
 
     @Test
