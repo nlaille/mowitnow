@@ -1,9 +1,8 @@
-package com.mowitnow.automaton;
+package com.mowitnow.automaton.lawnmover;
 
-import com.mowitnow.automaton.lawnmover.Movement;
-import com.mowitnow.automaton.lawnmover.MoveForward;
-import com.mowitnow.automaton.lawnmover.TurnLeft;
-import com.mowitnow.automaton.lawnmover.TurnRight;
+import com.mowitnow.automaton.Action;
+import com.mowitnow.automaton.ActionNotFoundException;
+import com.mowitnow.automaton.Automaton;
 import com.mowitnow.map.Orientation;
 import com.mowitnow.map.OrientedPosition;
 import com.mowitnow.map.Position;
