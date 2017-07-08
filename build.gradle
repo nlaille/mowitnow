@@ -10,3 +10,22 @@ dependencies {
 
     testCompile 'junit:junit:4.12'
 }
+
+task runSample1(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'com.mowitnow.SequentialFileLauncher'
+
+    // arguments to pass to the application
+    args('input/sample1.mow')
+}
+
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+
+    main = 'com.mowitnow.SequentialFileLauncher'
+
+    if(project.hasProperty('file')){
+        args(file)
+    }
+}

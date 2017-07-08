@@ -31,7 +31,7 @@ public class SequentialCentral {
 
     public void run(List<List<Action>> actions) throws CentralException {
         if (this.automatons.size() < actions.size()) {
-            throw new CentralException("Il y a plus d'actions que d'automate.");
+            throw new CentralException("Il y a plus d'actions que d'automates.");
         }
         int i = 0;
 
@@ -70,5 +70,7 @@ public class SequentialCentral {
         return false;
     }
 
-
+    public List<Automaton> getAutomatons() {
+        return this.automatons;
+    }
 }
